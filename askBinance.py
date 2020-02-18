@@ -67,10 +67,11 @@ while True:
     print('+++++++++++++++++++++++++')
     #print(json.dumps(js, indent=4))
 
-
+    #Calculations
     NAIRABASE = (float(js2['bidPrice']))
     CNPRICE = (float(js['askPrice']))
     EXCHNG = NAIRABASE / CNPRICE
+
     EXCHNG = str(round(EXCHNG,3))
     NAIRABASE = str(round(NAIRABASE,3))
     CNPRICE = str(round(CNPRICE,3))
@@ -101,4 +102,8 @@ while True:
     )
     print('1',CNSYMB,'=$' + CNPRICE)
     print('1 BTC is also =N=' + NAIRABASE)
-    print('RATE =N=' + EXCHNG)
+
+    if cryptopair == 'BTCUSDT':
+        print('RATE =N=' + EXCHNG)
+    else:
+        print('RATE = UNAVAILABLE')
