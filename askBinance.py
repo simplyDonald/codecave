@@ -39,6 +39,7 @@ while True:
 
     url = serviceurl + urllib.parse.urlencode(parms)
     url2 = 'https://api.binance.com/api/v3/ticker/bookTicker?symbol=BTCNGN'
+    RATEURL = 'https://api.binance.com/api/v3/ticker/bookTicker?symbol=BUSDNGN'
 
     print('Retrieving', url)
     try:
@@ -51,11 +52,14 @@ while True:
     data = uh.read().decode()
     uh2 = urllib.request.urlopen(url2, context=ctx)
     data2 = uh2.read().decode()
+    RATEURL = urllib.request.urlopen(RATEURL, context=ctx)
+    RATEDATA = RATEURL.read().decode()
     print('Retrieved', len(data), 'characters')
 
 
     js = json.loads(data)
     js2 = json.loads(data2)
+    js3 = json.loads(RATEDATA)
 
 
     #if 'symbol' not in js:
@@ -70,8 +74,11 @@ while True:
     #Calculations
     NAIRABASE = (float(js2['bidPrice']))
     CNPRICE = (float(js['askPrice']))
-    EXCHNG = NAIRABASE / CNPRICE
+    EXCHNGBASE = float(js3['askPrice'])
+    CNNAIRARATE = CNPRICE * EXCHNGBASE
+    EXCHNG = CNNAIRARATE / CNPRICE
 
+    EXCHNGBASE = str(round(EXCHNGBASE,3))
     EXCHNG = str(round(EXCHNG,3))
     NAIRABASE = str(round(NAIRABASE,3))
     CNPRICE = str(round(CNPRICE,3))
@@ -103,7 +110,11 @@ while True:
     print('1',CNSYMB,'=$' + CNPRICE)
     print('1 BTC is also =N=' + NAIRABASE)
 
-    if cryptopair == 'BTCUSDT':
-        print('RATE =N=' + EXCHNG)
+    if 'USDT' not in cryptopair:
+        print('RATES ONLY AVAILABLE FOR USDT COIN PAIRINGS')
+
+    elif cryptopair == 'BTCUSDT':
+        print('RATE =N=' + EXCHNGBASE)
+
     else:
-        print('RATE = UNAVAILABLE')
+        print('RATE =N=' + EXCHNG)
