@@ -80,6 +80,8 @@ while True:
     EXCHNGBASE = float(js3['askPrice'])
     CNNAIRARATE = CNPRICE * EXCHNGBASE
     EXCHNG = CNNAIRARATE / CNPRICE
+    TRADEEXCHNG = NAIRABASE / CNPRICE
+    TRADEEXCHNG = str(round(TRADEEXCHNG,2))
 
     EXCHNGBASE = str(round(EXCHNGBASE,3))
     EXCHNG = str(round(EXCHNG,3))
@@ -112,14 +114,14 @@ while True:
 ------------------TO THE MOON!!!!!----------------
     '''
     )
-    print('1',CNSYMB,'=$' + CNPRICE,'\t24hr change:' + tickdat + '%')
+    print('1',CNSYMB,'=$' + CNPRICE,'\t24hr Change:' + tickdat + '%')
     print('1 BTC is also =N=' + NAIRABASE)
 
     if 'USDT' not in cryptopair:
         print('RATES ONLY AVAILABLE FOR USDT COIN PAIRINGS')
 
     elif cryptopair == 'BTCUSDT':
-        print('RATE =N=' + EXCHNGBASE)
+        print('RATE =N=' + TRADEEXCHNG,'\nBUSDNGN:=N=' + EXCHNGBASE)
 
     else:
         print('RATE =N=' + EXCHNG)
