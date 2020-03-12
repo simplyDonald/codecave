@@ -48,11 +48,16 @@ while True:
         print('Oops!  that was no valid symbol. Can you try something else?..')
         continue
 
+    try:
+        th = urllib.request.urlopen(tickerurl, context=ctx)
+    except urllib.error.HTTPError as e:
+        if e.code == 400:
+            print('ZZZzzzzzz....\nServer was sleeping,pls try again')
+            continue
 
     data = uh.read().decode()
     uh2 = urllib.request.urlopen(url2, context=ctx)
     data2 = uh2.read().decode()
-    th = urllib.request.urlopen(tickerurl, context=ctx)
     dataticker = th.read().decode()
     RATEURL = urllib.request.urlopen(RATEURL, context=ctx)
     RATEDATA = RATEURL.read().decode()
@@ -83,6 +88,8 @@ while True:
     TRADEEXCHNG = NAIRABASE / CNPRICE
     TRADEEXCHNG = str(round(TRADEEXCHNG,2))
 
+    #String conversions + json extraction
+    CNNAIRARATE = str(round(CNNAIRARATE,2))
     EXCHNGBASE = str(round(EXCHNGBASE,3))
     EXCHNG = str(round(EXCHNG,3))
     NAIRABASE = str(round(NAIRABASE,3))
@@ -124,4 +131,4 @@ while True:
         print('RATE =N=' + TRADEEXCHNG,'\nBUSDNGN:=N=' + EXCHNGBASE)
 
     else:
-        print('RATE =N=' + EXCHNG)
+        print('RATE =N=' + EXCHNG, '\nNAIRA EQ.:=N=' + CNNAIRARATE)
