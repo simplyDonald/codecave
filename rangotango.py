@@ -159,7 +159,7 @@ if __name__ == "__main__" :
         print('Delta:' + str(lunoBinanceETH) + '%')
         print('Luno Market BUY price:=N=' + str(LunoETHNGN),'\nLuno Market volume:' + str(LunoETHDepth))
         NAIRAEQ = LunoETHNGN * LunoETHDepth
-        print('NAIRAEQ.:=N=',+ str(NAIRAEQ),'\n--------')
+        print('NAIRAEQ.:=N=' + str(NAIRAEQ),'\n--------')
         print('Binance Market SELL price:=N=' + str(BinETHNGN),'\nBinance Market volume:' + str(BinBIDETHUSDT))
         BinNAIRAEQ = BinETHNGN * BinBIDETHUSDT
         print('NAIRAEQ.:=N=' + str(BinNAIRAEQ))
