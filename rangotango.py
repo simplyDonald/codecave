@@ -173,7 +173,7 @@ if __name__ == "__main__" :
         print( 'Binance Market BUY price:=N=' + str(BinETHNGN),'\nBinance Market volume:' + str(BinBIDETHUSDT))
         NAIRAEQ = BinETHNGN * BinBIDETHUSDT
         print('NAIRAEQ.:=N=' + str(NAIRAEQ),'\n--------')
-        print('Luno Market SELL price:=N=' + str(LunoBIDETHNGN),'\nBinance Market volume:' + str(LunoBIDETHDepth))
+        print('Luno Market SELL price:=N=' + str(LunoBIDETHNGN),'\nLuno Market volume:' + str(LunoBIDETHDepth))
         BinNAIRAEQ = LunoBIDETHNGN * LunoBIDETHDepth
         print('NAIRAEQ.:=N=' + str(BinNAIRAEQ))
         if NAIRAEQ > BinNAIRAEQ:
