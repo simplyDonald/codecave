@@ -208,4 +208,4 @@ if __name__ == "__main__" :
         else:
                 print('BALANCED TRADE')
     else:
-        print('EQUIVALENT PRICES: NO PROFITABLE TRADES AT THE MOMENT')
+        print('EQUIVALENT PRICES: NO PROFITABLE ETHEREUM TRADES AT THE MOMENT')
