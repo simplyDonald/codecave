@@ -88,12 +88,14 @@ BinBIDDepth = float(js1['bidQty'])
 BinBUSDNGN = float(js2['askPrice'])
 BinETHUSDT = float(js3['askPrice'])
 BinETHDepth = float(js3['askQty'])
-BinBIDETHUSDT = float(js3['bidQty'])
+BinBIDETHUSDT = float(js3['bidPrice'])
+BinBIDDepthETHUSDT = float(js3['bidQty'])
 BinUSDTDAT = float(js6['askPrice'])
 
 #BINANCE ETH Calculations
 TRADEEXCHNG = BinBIDBTCNGN / BinUSDTDAT
 BinETHNGN = TRADEEXCHNG * BinETHUSDT
+BinBIDETHNGN = TRADEEXCHNG * BinBIDETHUSDT
 
 #LUNO JSON CRUNCH
 LunoBTCNGN = float(js4['asks'][0]['price'])
@@ -117,9 +119,9 @@ def percentdiff(a, b) :
 # Driver code
 if __name__ == "__main__" :
 
-    a, b = LunoBTCNGN, BinBTCNGN
+    a, b = LunoBTCNGN, BinBIDBTCNGN
     lunoBinanceBTC = percentdiff(a, b)
-    if LunoBTCNGN < BinBTCNGN :
+    if LunoBTCNGN < BinBIDBTCNGN :
         print('**BITCOIN** \nLUNO:BUY ===> \tBINANCE:SELL')
         print('Delta:' + str(lunoBinanceBTC) + '%')
         print( 'Luno Market BUY price:=N=' + str(LunoBTCNGN),'\nLuno Market volume:' + str(LunoBTCDepth))
@@ -128,19 +130,31 @@ if __name__ == "__main__" :
         print('Binance Market SELL price:=N=' + str(BinBIDBTCNGN),'\nBinance Market volume:' + str(BinBIDDepth))
         BinNAIRAEQ = BinBIDBTCNGN * BinBIDDepth
         print('NAIRAEQ.:=N=' + str(BinNAIRAEQ))
+            profit_after_deposit = (lunoBinanceETH * NAIRAEQ) - (0.014 * NAIRAEQ)
+            profit_after_trade = (profit_after_deposit * 0.01)
+            print('PROFIT P/DEPO:~ =N=' + str(profit_after_deposit))
+            print('PROFIT P/TRADE:~ =N=' + str(profit_after_trade)')
         if NAIRAEQ > BinNAIRAEQ:
             print('DEFICIT ON TRADE')
         else:
             print('BALANCED TRADE')
-    elif LunoBTCNGN > BinBTCNGN:
+
+
+    elif BinBTCNGN < LunoBIDBTCNGN:
+        a, b = BinBTCNGN, LunoBIDBTCNGN
+        lunoBinanceBTC = percentdiff(a, b)
         print('**BITCOIN** \nBINANCE:BUY ===> \tLUNO:SELL')
         print('Delta:' + str(lunoBinanceBTC) + '%')
         print('Binance Market BUY price:=N=' + str(BinBTCNGN),'\nBinance Market volume:' + str(BinBTCDepth))
         NAIRAEQ = BinBTCNGN * BinBTCDepth
         print('NAIRAEQ.:=N=' + str(NAIRAEQ),'\n--------')
-        print('Luno Market SELL price:=N=' + str(LunoBIDBTCNGN),'\nBinance Market volume:' + str(LunoBIDBTCDepth))
+        print('Luno Market SELL price:=N=' + str(LunoBIDBTCNGN),'\nLuno Market volume:' + str(LunoBIDBTCDepth))
         BinNAIRAEQ = LunoBIDBTCNGN * LunoBIDBTCDepth
         print('NAIRAEQ.:=N=' + str(BinNAIRAEQ))
+            profit_after_deposit = lunoBinanceETH * (NAIRAEQ - 150)
+            profit_after_trade = (profit_after_deposit * 0.00075)
+            print('PROFIT P/DEPO(Bank Transfer):~ =N=' + str(profit_after_deposit))
+            print('PROFIT P/TRADE:~ =N=' + str(profit_after_trade))
         if NAIRAEQ > BinNAIRAEQ:
             print('DEFICIT ON TRADE')
         else:
@@ -152,30 +166,42 @@ if __name__ == "__main__" :
 
 
 
-    a, b = LunoETHNGN, BinETHNGN
+    a, b = LunoETHNGN, BinBIDETHNGN
     lunoBinanceETH = percentdiff(a, b)
-    if LunoETHNGN < BinETHNGN :
+    if LunoETHNGN < BinBIDETHNGN :
         print('**ETHEREUM** \nLUNO:BUY ===> \tBINANCE:SELL')
         print('Delta:' + str(lunoBinanceETH) + '%')
         print('Luno Market BUY price:=N=' + str(LunoETHNGN),'\nLuno Market volume:' + str(LunoETHDepth))
         NAIRAEQ = LunoETHNGN * LunoETHDepth
         print('NAIRAEQ.:=N=' + str(NAIRAEQ),'\n--------')
-        print('Binance Market SELL price:=N=' + str(BinETHNGN),'\nBinance Market volume:' + str(BinBIDETHUSDT))
+        print('Binance Market SELL price:=N=' + str(BinBIDETHNGN),'\nBinance Market volume:' + str(BinBIDDepthETHUSDT))
         BinNAIRAEQ = BinETHNGN * BinBIDETHUSDT
         print('NAIRAEQ.:=N=' + str(BinNAIRAEQ))
+        profit_after_deposit = (lunoBinanceETH * NAIRAEQ) - (0.014 * NAIRAEQ)
+        profit_after_trade = (profit_after_deposit * 0.01)
+        print('PROFIT P/DEPO:~ =N=' + str(profit_after_deposit))
+        print('PROFIT P/TRADE:~ =N=' + str(profit_after_trade)')
         if NAIRAEQ > BinNAIRAEQ:
             print('DEFICIT ON TRADE')
         else:
                 print('BALANCED TRADE')
-    elif LunoETHNGN > BinETHNGN:
+
+    elif BinETHNGN < LunoBIDETHNGN:
+
+        a, b = BinETHNGN, LunoBIDETHNGN
+        lunoBinanceETH = percentdiff(a, b)
         print('**ETHEREUM** \nBINANCE:BUY ===> \tLUNO:SELL')
         print('Delta:' + str(lunoBinanceETH) + '%')
-        print( 'Binance Market BUY price:=N=' + str(BinETHNGN),'\nBinance Market volume:' + str(BinBIDETHUSDT))
-        NAIRAEQ = BinETHNGN * BinBIDETHUSDT
+        print( 'Binance Market BUY price:=N=' + str(BinETHNGN),'\nBinance Market volume:' + str(BinETHDepth))
+        NAIRAEQ = BinETHNGN * BinETHDepth
         print('NAIRAEQ.:=N=' + str(NAIRAEQ),'\n--------')
         print('Luno Market SELL price:=N=' + str(LunoBIDETHNGN),'\nLuno Market volume:' + str(LunoBIDETHDepth))
         BinNAIRAEQ = LunoBIDETHNGN * LunoBIDETHDepth
         print('NAIRAEQ.:=N=' + str(BinNAIRAEQ))
+        profit_after_deposit = lunoBinanceETH * (NAIRAEQ - 150)
+        profit_after_trade = (profit_after_deposit * 0.00075)
+        print('PROFIT P/DEPO(Bank Transfer):~ =N=' + str(profit_after_deposit))
+        print('PROFIT P/TRADE:~ =N=' + str(profit_after_trade))
         if NAIRAEQ > BinNAIRAEQ:
             print('DEFICIT ON TRADE')
         else:
