@@ -121,17 +121,17 @@ if __name__ == "__main__" :
 
     if LunoBTCNGN < BinBIDBTCNGN :
         a, b = LunoBTCNGN, BinBIDBTCNGN
-        lunoBinanceBTC = percentdiff(a, b)
+        Delta = percentdiff(a, b)
 
         print('**BITCOIN** \nLUNO:BUY ===> \tBINANCE:SELL')
-        print('Delta:' + str(lunoBinanceBTC) + '%')
+        print('Delta:' + str(Delta) + '%')
         print( 'Luno Market BUY price:=N=' + str(LunoBTCNGN),'\nLuno Market volume:' + str(LunoBTCDepth))
         NAIRAEQ = round(LunoBTCNGN * LunoBTCDepth,2)
         print('NAIRAEQ.:=N=' + str(NAIRAEQ),'\n--------')
         print('Binance Market SELL price:=N=' + str(BinBIDBTCNGN),'\nBinance Market volume:' + str(BinBIDDepth))
         BinNAIRAEQ = round(BinBIDBTCNGN * BinBIDDepth,2)
         print('NAIRAEQ.:=N=' + str(BinNAIRAEQ))
-        profit_after_deposit = (lunoBinanceBTC * NAIRAEQ) - (0.014 * NAIRAEQ)
+        profit_after_deposit = (Delta * NAIRAEQ) - (0.014 * NAIRAEQ)
         profit_after_trade = (profit_after_deposit * 0.01)
         print('PROFIT P/DEPO:~ =N=' + str(profit_after_deposit))
         print('PROFIT P/TRADE:~ =N=' + str(profit_after_trade))
@@ -143,16 +143,16 @@ if __name__ == "__main__" :
 
     elif BinBTCNGN < LunoBIDBTCNGN:
         a, b = BinBTCNGN, LunoBIDBTCNGN
-        lunoBinanceBTC = percentdiff(a, b)
+        Delta = percentdiff(a, b)
         print('**BITCOIN** \nBINANCE:BUY ===> \tLUNO:SELL')
-        print('Delta:' + str(lunoBinanceBTC) + '%')
+        print('Delta:' + str(Delta) + '%')
         print('Binance Market BUY price:=N=' + str(BinBTCNGN),'\nBinance Market volume:' + str(BinBTCDepth))
         NAIRAEQ = round(BinBTCNGN * BinBTCDepth,2)
         print('NAIRAEQ.:=N=' + str(NAIRAEQ),'\n--------')
         print('Luno Market SELL price:=N=' + str(LunoBIDBTCNGN),'\nLuno Market volume:' + str(LunoBIDBTCDepth))
         BinNAIRAEQ = round(LunoBIDBTCNGN * LunoBIDBTCDepth,2)
         print('NAIRAEQ.:=N=' + str(BinNAIRAEQ))
-        profit_after_deposit = lunoBinanceETH * (NAIRAEQ - 150)
+        profit_after_deposit = Delta * (NAIRAEQ - 150)
         profit_after_trade = (profit_after_deposit * 0.00075)
         print('PROFIT P/DEPO(Bank Transfer):~ =N=' + str(profit_after_deposit))
         print('PROFIT P/TRADE:~ =N=' + str(profit_after_trade))
@@ -168,17 +168,17 @@ if __name__ == "__main__" :
 
 
     a, b = LunoETHNGN, BinBIDETHNGN
-    lunoBinanceETH = percentdiff(a, b)
+    Delta = percentdiff(a, b)
     if LunoETHNGN < BinBIDETHNGN :
         print('**ETHEREUM** \nLUNO:BUY ===> \tBINANCE:SELL')
-        print('Delta:' + str(lunoBinanceETH) + '%')
+        print('Delta:' + str(Delta) + '%')
         print('Luno Market BUY price:=N=' + str(LunoETHNGN),'\nLuno Market volume:' + str(LunoETHDepth))
         NAIRAEQ = round(LunoETHNGN * LunoETHDepth,2)
         print('NAIRAEQ.:=N=' + str(NAIRAEQ),'\n--------')
         print('Binance Market SELL price:=N=' + str(BinBIDETHNGN),'\nBinance Market volume:' + str(BinBIDDepthETHUSDT))
         BinNAIRAEQ = round(BinETHNGN * BinBIDETHUSDT,2)
         print('NAIRAEQ.:=N=' + str(BinNAIRAEQ))
-        profit_after_deposit = (lunoBinanceETH * NAIRAEQ) - (0.014 * NAIRAEQ)
+        profit_after_deposit = (Delta * NAIRAEQ) - (0.014 * NAIRAEQ)
         profit_after_trade = (profit_after_deposit * 0.01)
         print('PROFIT P/DEPO:~ =N=' + str(profit_after_deposit))
         print('PROFIT P/TRADE:~ =N=' + str(profit_after_trade))
@@ -190,16 +190,16 @@ if __name__ == "__main__" :
     elif BinETHNGN < LunoBIDETHNGN:
 
         a, b = BinETHNGN, LunoBIDETHNGN
-        lunoBinanceETH = percentdiff(a, b)
+        Delta = percentdiff(a, b)
         print('**ETHEREUM** \nBINANCE:BUY ===> \tLUNO:SELL')
-        print('Delta:' + str(lunoBinanceETH) + '%')
+        print('Delta:' + str(Delta) + '%')
         print( 'Binance Market BUY price:=N=' + str(BinETHNGN),'\nBinance Market volume:' + str(BinETHDepth))
         NAIRAEQ = round(BinETHNGN * BinETHDepth,2)
         print('NAIRAEQ.:=N=' + str(NAIRAEQ),'\n--------')
         print('Luno Market SELL price:=N=' + str(LunoBIDETHNGN),'\nLuno Market volume:' + str(LunoBIDETHDepth))
         BinNAIRAEQ = round(LunoBIDETHNGN * LunoBIDETHDepth,2)
         print('NAIRAEQ.:=N=' + str(BinNAIRAEQ))
-        profit_after_deposit = lunoBinanceETH * (NAIRAEQ - 150)
+        profit_after_deposit = Delta * (NAIRAEQ - 150)
         profit_after_trade = (profit_after_deposit * 0.00075)
         print('PROFIT P/DEPO(Bank Transfer):~ =N=' + str(profit_after_deposit))
         print('PROFIT P/TRADE:~ =N=' + str(profit_after_trade))
