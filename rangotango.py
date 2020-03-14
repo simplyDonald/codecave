@@ -135,10 +135,6 @@ if __name__ == "__main__" :
         print('PROFIT P/DEPO:~ =N=' + str(profit_after_deposit))
         print('PROFIT P/TRADE:~ =N=' + str(profit_after_trade))
         if naira_Eq1 > naira_Eq2:
-        profit_after_trade = (profit_after_deposit * 0.01)
-        print('PROFIT P/DEPO:~ =N=' + str(profit_after_deposit))
-        print('PROFIT P/TRADE:~ =N=' + str(profit_after_trade))
-        if NAIRAEQ > BinNAIRAEQ:
             print('DEFICIT ON TRADE')
         else:
             print('BALANCED TRADE')
