@@ -32,8 +32,8 @@ while True:
     try:
         url = requests.get('https://api.binance.com/api/v3/ticker/bookTicker', params=parms)
         tickerurl = requests.get('https://api.binance.com/api/v3/ticker/24hr', params=parms)
-    except error as e:
-        print(e)
+    except requests.exceptions.RequestException as e:
+        print("====Ooops..seems there's a connection error====\n",e)
         continue
 
     url2 = requests.get('https://api.binance.com/api/v3/ticker/bookTicker?symbol=BTCNGN')
