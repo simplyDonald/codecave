@@ -1,5 +1,5 @@
 import requests
-
+import beepy
 #api_key = 'tQNzkr*******gd8gY'
 # If you have an API key, enter it here
 # api_key = 'AIzaSy___IDByT70'
@@ -34,6 +34,7 @@ while True:
         tickerurl = requests.get('https://api.binance.com/api/v3/ticker/24hr', params=parms)
     except requests.exceptions.RequestException as e:
         print("====Ooops..seems there's a connection error====\n",e)
+        beepy.beep(sound='error')
         continue
 
     url2 = requests.get('https://api.binance.com/api/v3/ticker/bookTicker?symbol=BTCNGN')
@@ -50,6 +51,7 @@ while True:
     if 'symbol' not in js:
         print('==== Oops! there was a glitch somewhere... ====')
         print(js['msg'])
+        beepy.beep(sound='error')
         continue
 
     print('+++++++++++++++++++++++++')
@@ -108,3 +110,4 @@ while True:
 
     else:
         print('RATE =N=' + EXCHNG, '\nNAIRA EQ.:=N=' + CNNAIRARATE)
+    beepy.beep(sound='ping')
