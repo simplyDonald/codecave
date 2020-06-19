@@ -174,7 +174,7 @@ if __name__ == "__main__" :
         print('NAIRAEQ.:=N=' + str(naira_Eq1),'\n--------')
         print('Binance Market SELL price:=N=' + str(bin_Bid_ETHNGN),'\nBinance Market volume:' + str(bin_Bid_ETHBUSD_Depth))
         naira_Eq2 = round(bin_Bid_ETHNGN * bin_Bid_ETHBUSD_Depth,2)
-        print('NAIRAEQ.:=N=' + str(naira_EQ2))
+        print('NAIRAEQ.:=N=' + str(naira_Eq2))
         profit_after_deposit = (Delta * naira_Eq1) - (0.014 * naira_Eq1)
         profit_after_trade = (profit_after_deposit * 0.01)
         print('PROFIT P/DEPO:~ =N=' + str(profit_after_deposit))
